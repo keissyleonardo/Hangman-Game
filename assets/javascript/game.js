@@ -9,18 +9,18 @@
 
 // Create array of words 
 
-var myArray = ['cookies', 'pizza', 'tacos', 'soup', 'noodles', 'chocolate', 'cake'];
+var myArray = ['Cookies', 'Pizza', 'Tacos', 'Soup', 'Noodles', 'Chocolate', 'cake'];
 
-// Random choice from the Array  
+// Random Choice from the Array  
 
-var choice = myArray[Math.floor(Math.random()*myArray.length)];
-	console.log(choice);
+var Choice = myArray[Math.floor(Math.random()*myArray.length)];
+	console.log(Choice);
   	
 
 // Underscore var 
 
 var underscore = [];
-	for (var i = 0; i < choice.length; i++) {
+	for (var i = 0; i < Choice.length; i++) {
  		underscore.push('_');
  		underscore.join("");
 	}
@@ -37,17 +37,17 @@ console.log(underscore);
 
 // // Get users guess 
 
-// document.onkeyup= function(event) {
-// 	var userGuess = event.key; 
-// 		for (var j=0; j<choice.length; j++){
-// 			 if(choice[j]===userGuess){
-//             	choice[j]=userGuess;
-//         console.log("this bull shit worked");
-// 		}
+document.onkeyup= function(event) {
+	var userGuess = event.key; 
+		for (var j=0; j<Choice.length; j++){
+			 if(Choice[j]===userGuess){
+            	Choice[j]=userGuess;
+            	console.log("this bull shit worked");
+		}
 
-// 	}
+	}
 
-// };
+};
 
 
 
@@ -61,46 +61,35 @@ var remaining = 15;
 document.onkeyup = function(event) {
 	var userGuess = event.key;
 	var answerFound = false;
-	console.log(userGuess);
 
-   	for(var j=0; j<choice.length; j++){
+   	for(var j=0; j<Choice.length; j++){
 
 		//If user guess is found in the word fill underscore w letter.  
-	    if(choice[j] === userGuess){
+	    if(Choice[j]===userGuess){
 	    	underscore[j]=userGuess;
 	    	answerFound = true;
 	    }
 	}
 
 
-	if (answerFound){
-		el.innerHTML = underscore;
-		console.log(`this is the underscore array now: ${underscore}`);
-
-	} else if (!answerFound){
+	if (!answerFound){
  		wrongAnswers.push(userGuess);
- 		console.log(`All the wrong choices ${wrongAnswers}`);
     	remaining --;
     }
 
 
 
-	if(underscore==choice)	{
+	if(underscore==Choice)	{
         alert("Congratulations, You Won!");
         wins++;
     }
 
-    else if(remaining===0){
+    if(remaining===0){
     	alert("You lost! You know nothing");
     }
 
     // Show results to user
-    var elRemain = document.getElementById("remaining");
-
-										// printArray
-	elRemain.innerHTML = remaining;
-
-
+    var el = document.getElementById("remaining");
 
 }; 
 
